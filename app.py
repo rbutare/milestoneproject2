@@ -16,15 +16,18 @@ def menu():
     while user_input != "q":
         if user_input == "a":
             database.a()
+            database.save_to_csv()
             user_input = input(USER_CHOICE)
         elif user_input == "r":
             database.r()
+            database.save_to_csv()
             user_input = input(USER_CHOICE)
         elif user_input == "l":
             database.l()
             user_input = input(USER_CHOICE)
         elif user_input == "d":
             database.d()
+            database.save_to_csv()
             user_input = input(USER_CHOICE)
         elif user_input == "q":
             break

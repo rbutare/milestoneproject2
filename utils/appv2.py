@@ -7,18 +7,16 @@ Concerned with storing and retrieving books from  a list
 -'q' to quit
 """
 import csv
-
 books = []
 
 
-def save_to_csv():
-    with open("library.csv", "w") as lib:
+def save_to_csv:
+    with open("library.csv","w") as lib:
         fieldnames = ['name', 'author', 'read']
         writer = csv.DictWriter(lib, fieldnames=fieldnames)
 
         writer.writeheader()
         writer.writerows(books)
-
 
 def a():
     books.append(dict(
@@ -26,6 +24,7 @@ def a():
         author=input("Enter book author:"),
         read=False
     ))
+    save_to_csv()
 
 
 def l():
@@ -40,9 +39,11 @@ def r():
     for book in books:
         if book['name'] == user_input:
             book['read'] = True
+            save_to_csv()
 
 
 def d():
     user_input = input("What title would like to delete:")
     global books
     books = [book for book in books if book['name'] != user_input]
+    save_to_csv()
