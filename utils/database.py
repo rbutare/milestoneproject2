@@ -36,7 +36,7 @@ def a(name, author):
     connection = _sqlite3.connect('data.db')
     cursor = connection.cursor()
 
-    cursor.execute('INSERT INTO books VALUES(?, ?, 0)', (name, author))
+    cursor.execute('INSERT INTO books VALUES(?, ?, 0)', (name, author,))
 
     connection.commit()
 
@@ -45,8 +45,9 @@ def a(name, author):
 
 def l(books):
     books = get_all_books()
-    read = "yes" if books['read'] else "no"
-    print(f"{books['name']} written by {books['author']} read: {read}")
+    for book in books:
+        read = "yes" if book['read'] else "no"
+        print(f"{book['name']} written by {book['author']} read: {read}")
 
 
 def r(book_name):
