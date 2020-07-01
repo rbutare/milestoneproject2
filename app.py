@@ -10,30 +10,30 @@ Enter:
 Your choice:"""
 
 
-
 def menu():
+    database.create_book_table()
     user_input = input(USER_CHOICE)
     while user_input != "q":
         if user_input == "a":
-            database.a()
-            database.save_to_csv()
-            user_input = input(USER_CHOICE)
+            name = input("Enter book name:")
+            author = input("Enter book author:")
+            database.a(name, author)
         elif user_input == "r":
-            database.r()
-            database.save_to_csv()
-            user_input = input(USER_CHOICE)
+            user_input = input("What title are you reading?: ")
+            database.r(user_input)
         elif user_input == "l":
-            database.l()
-            user_input = input(USER_CHOICE)
+            books = database.get_all_books()
+            for book in books:
+                database.l(book)
+
         elif user_input == "d":
-            database.d()
-            database.save_to_csv()
-            user_input = input(USER_CHOICE)
+            user_input = input("What title would like to delete: ")
+            database.d(user_input)
         elif user_input == "q":
             break
         else:
             print("Unknown command. Please try again!")
-            user_input = input(USER_CHOICE)
+        user_input = input(USER_CHOICE)
 
 
 menu()
